@@ -1,16 +1,41 @@
 .page {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  width: 100%;
+  max-width: 800px;
 }
 
 .main {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 form {
   align-items: center;
   display: center;
   justify-content: center;
+}
+
+.moviesCss {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+.movieCss {
+  text-align: center;
+}
+
+.movieCss h3, .movieCss p{
+ padding-bottom: 0;
+}
+
+.movieCss img {
+  border-radius: 8px;
 }

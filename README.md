@@ -13,7 +13,9 @@ Crear una apicacion para buscar peliculas
 APi a usa
 https://www.omdbapi.com/
 https://www.omdbapi.com/?apikey=421251e&s=avengers
-API_KEY: 4287ad87
+API_KEY: 421251e
+
+sin resultados https://www.omdbapi.com/?apikey=421251e&s=avengersdidnddnd
 
 Requerimiento
 necesita mostrar un input para buscar la pelicula y un boton para buscar
@@ -31,3 +33,8 @@ Pasos
 2. poner el nombre
 3. ingresar a la carpeta y despues generar un npm i
 4. limpiar el proyecto
+5. Crear el linter
+6. Framework class lest se estila un poco la pagina Water.css
+7. componetizar y crear los custom hooks
+8. comenzar con los formularios nuevo hook useRef
+   es un hook referencia mutable persiste en toda la aplicacion
