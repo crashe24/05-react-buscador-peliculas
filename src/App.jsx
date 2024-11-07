@@ -7,15 +7,18 @@ import { useSearch } from './hooks/useSearch'
 
 
 function App() {
-  const {movies} = useMovies()
   const {query, error, setQuery} = useSearch()
+  const {movies, getMovies} = useMovies(query)
+  
+  
   //const inputRef = useRef()
   //const [query, setQuery] = useState('')
   //const [error, setError] = useState()
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log({query})
+    console.log(query)
+    getMovies()
   }
 
   const handleChange = (event) => {
