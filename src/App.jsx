@@ -1,22 +1,22 @@
 //import { useEffect, useRef, useState } from 'react'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import './App.css'
 import { MainMovies } from './components/MainMovies'
 import { useMovies } from './hooks/useMovies'
 import { useSearch } from './hooks/useSearch'
-
+import debounce from 'just-debounce-it'
 
 
 function App() {
   // para el uso de useMemo y useCallBack
   const [sort, setSort ] = useState(false)
 
-  const {query, error, setQuery} = useSearch()
+  const {query, error, updateSearch} = useSearch()
   const {movies, getMovies, loading, errorMovies} = useMovies(query, sort)
   
+  const debouncedGetMovies = useCallback(debounce( search => {getMovies(search)},500 ), [getMovies])
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(query)
     getMovies(query)
   }
 
@@ -24,9 +24,19 @@ function App() {
     setSort(!sort)
   }
 
+  // debounce o busqueda cada ves que ingrese un search tiempo de espera 
+  // instalar librerias
+  // npm i just-debounce-it -E
   const handleChange = (event) => {
-    setQuery(event.target.value)
+    const newSearch = event.target.value 
+    updateSearch(newSearch)
+    //getMovies({ search: newSearch}) sin debounce
+    debouncedGetMovies(newSearch)
   }
+  
+  /*const handleChange = (event) => {
+    setQuery(event.target.value)
+  }*/
 
   return (
     <>

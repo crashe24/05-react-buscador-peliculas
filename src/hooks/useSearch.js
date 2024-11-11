@@ -26,5 +26,9 @@ export function useSearch() {
       setError(null)
     },[query])
   
-    return {query , error, setQuery }
+    const updateSearch = (search ) => {
+      setQuery(search)
+    }
+
+    return {query , error, updateSearch }
   }
